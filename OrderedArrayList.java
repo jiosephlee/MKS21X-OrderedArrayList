@@ -16,10 +16,15 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
   }
 
   public boolean add(T value){
+    boolean added = false;
     for (int x = 0; x < size() ; x++){
-      if (value.compareTo(get(x)) >= 0){
+      if (get(x).compareTo(value) >= 0 && !added){
         super.add(x,value);
+        added = true;
       }
+    }
+    if (!added){
+      super.add(value);
     }
     return true;
   }

@@ -9,18 +9,19 @@ public class NoNullArrayList<T> extends ArrayList<T>{
   }
 
   public T set(int index, T value){
-    T output = get(index);
     if (value == null){
-      throw new IndexOutOfBoundsException("Error: Argument cannot be null");
-    } else {
-    super.set(index, value);
+      throw new IllegalArgumentException("Error: Argument cannot be null");
     }
+    else {
+    T output = get(index);
+    super.set(index, value);
     return output;
+    }
   }
 
   public boolean add(T value){
     if (value == null){
-      throw new IndexOutOfBoundsException("Error: Argument cannot be null");
+      throw new IllegalArgumentException("Error: Argument cannot be null");
     } else {
       super.add(value);
     }
@@ -29,7 +30,7 @@ public class NoNullArrayList<T> extends ArrayList<T>{
 
   public void add(int index, T value){
     if (value == null){
-      throw new IndexOutOfBoundsException("Error: Argument cannot be null");
+      throw new IllegalArgumentException("Error: Argument cannot be null");
     } else {
       super.add(index, value);
     }
