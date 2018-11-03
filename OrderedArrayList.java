@@ -9,13 +9,20 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
   }
 
   public T set(int index, T value){
+    if (value == null){
+      throw new IllegalArgumentException("Error: Argument cannot be null");
+    } else {
     T output = get(index);
     remove(index);
     add(value);
     return output;
   }
+  }
 
   public boolean add(T value){
+    if (value == null){
+      throw new IllegalArgumentException("Error: Argument cannot be null");
+    } else {
     boolean added = false;
     for (int x = 0; x < size() ; x++){
       if (get(x).compareTo(value) >= 0 && !added){
@@ -26,6 +33,7 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
     if (!added){
       super.add(value);
     }
+  }
     return true;
   }
 
